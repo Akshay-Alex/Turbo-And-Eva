@@ -1,6 +1,6 @@
 using UnityEngine;
-
-public class PlayerMovementWASD : MonoBehaviour
+using Unity.Netcode;
+public class PlayerMovementWASD : NetworkBehaviour
 {
     public float moveSpeed = 5f; // Speed of the player
     private Rigidbody rb;
@@ -16,6 +16,14 @@ public class PlayerMovementWASD : MonoBehaviour
 
     void Update()
     {
+        if(IsOwner)
+        {
+            Move();
+        }
+        
+    }
+    void Move()
+    {
         // Get input from WASD or arrow keys
         float moveX = Input.GetAxis("Horizontal"); // A (-1), D (+1), Left, Right
         float moveZ = Input.GetAxis("Vertical");   // W (+1), S (-1), Up, Down
@@ -25,7 +33,6 @@ public class PlayerMovementWASD : MonoBehaviour
         rb.MovePosition(transform.position + moveInput * moveSpeed * Time.deltaTime);
         // Move the player (in FixedUpdate for smoother physics)
     }
-
     void FixedUpdate()
     {
         // Apply movement

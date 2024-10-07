@@ -459,7 +459,7 @@ Transform:
   m_GameObject: {fileID: 700452673}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5270283, y: -0.46656284, z: 0.47760737, w: 0.52578664}
-  m_LocalPosition: {x: -1.5510826, y: 1.0879612, z: 0.039955065}
+  m_LocalPosition: {x: -1.5510826, y: 1.0879612, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -945,7 +945,7 @@ MonoBehaviour:
   HandTargets:
   - {fileID: 1434019512}
   - {fileID: 700452673}
-  mouseInputVector: {x: 0, y: 0, z: 0}
+  InputPositionVector: {x: 0, y: 0, z: 0}
 --- !u!4 &1346652467
 Transform:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ Transform:
   m_GameObject: {fileID: 1434019512}
   serializedVersion: 2
   m_LocalRotation: {x: 0.52888024, y: 0.4618757, z: -0.47687796, w: 0.52871925}
-  m_LocalPosition: {x: 1.551066, y: 1.0879471, z: 0.042330638}
+  m_LocalPosition: {x: 1.551066, y: 1.0879471, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []

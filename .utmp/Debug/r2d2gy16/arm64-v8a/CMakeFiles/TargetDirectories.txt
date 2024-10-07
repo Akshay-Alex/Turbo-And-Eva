@@ -1,0 +1,5 @@
+S:/Projects/Turbo And Eva/.utmp/Debug/r2d2gy16/arm64-v8a/CMakeFiles/edit_cache.dir
+S:/Projects/Turbo And Eva/.utmp/Debug/r2d2gy16/arm64-v8a/CMakeFiles/rebuild_cache.dir
+S:/Projects/Turbo And Eva/.utmp/Debug/r2d2gy16/arm64-v8a/GameActivity/CMakeFiles/game.dir
+S:/Projects/Turbo And Eva/.utmp/Debug/r2d2gy16/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+S:/Projects/Turbo And Eva/.utmp/Debug/r2d2gy16/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

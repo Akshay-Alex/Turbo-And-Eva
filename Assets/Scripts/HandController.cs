@@ -16,13 +16,13 @@ public class HandController : MonoBehaviour
         }
     }
     public Camera mainCamera;
-    public GameObject[] HandTargets;// Assign the main camera (optional, if using Camera.main)
+    public GameObject[] HandTargets;
     public Vector3 InputPositionVector;
     //List<GameObject> targetsBeingControlled, freeTargets;
-    Dictionary<Touch, GameObject> touchAndTargets = new Dictionary<Touch, GameObject>();
+    Dictionary<int, GameObject> touchAndTargets = new Dictionary<int, GameObject>();
     void Update()
     {
-        if (Input.touchCount > 0) // 0 is for left mouse button
+        if (Input.touchCount > 0)
         {
 
             for (int i = 0; i < Input.touchCount; i++)
@@ -34,15 +34,21 @@ public class HandController : MonoBehaviour
                 {
                     Debug.Log("Added touch "+touch.fingerId);
                     OnNewTouch(touch);
+                    ShowArray();
                 }
-                if (touch.phase == TouchPhase.Moved)
+                if (touch.phase == TouchPhase.Moved && touchAndTargets.ContainsKey(touch.fingerId))
                 {
-                    //OnMovedExistingTouch(touch);
+                    Debug.Log("Touch " + touch.fingerId + " moved");
+                    OnMovedExistingTouch(touch);
                 }
                 if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                 {
                     Debug.Log("Remove touch " + touch.fingerId);
-                    touchAndTargets.Remove(touch);
+                    if(touchAndTargets.ContainsKey(touch.fingerId))
+                    {
+                        touchAndTargets.Remove(touch.fingerId);
+                    }
+                    ShowArray();
                     /*
                     if (touchAndTargets.ContainsKey(touch))
                     {
@@ -52,6 +58,13 @@ public class HandController : MonoBehaviour
                 }
             }
             
+        }
+    }
+    void ShowArray()
+    {
+        foreach (KeyValuePair<int, GameObject> entry in touchAndTargets)
+        {
+            Debug.Log("Key: " + entry.Key + ", Value: " + entry.Value);
         }
     }
     private void Start()
@@ -146,13 +159,14 @@ public class HandController : MonoBehaviour
         if (positionAndTarget.target)
         {
             Debug.Log("Free target found");
-            touchAndTargets.Add(touch, positionAndTarget.target);
+            touchAndTargets.Add(touch.fingerId, positionAndTarget.target);
             MoveHand(positionAndTarget.position, positionAndTarget.target);
         }
     }
     void OnMovedExistingTouch(Touch touch)
     {
         PositionAndTarget positionAndTarget = FindNearestTarget(touch);
+        //PositionAndTarget positionAndTarget = FindNearestFreeTarget(touch);
         if (positionAndTarget.target)
         {
             //touchAndTargets.Add(touch, positionAndTarget.target);
